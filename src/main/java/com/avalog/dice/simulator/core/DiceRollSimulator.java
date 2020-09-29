@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class Simulation {
+public class DiceRollSimulator {
 
     private final DiceRollManager diceRollManager;
 
-    public Simulation(DiceRollManager diceRollManager) {
+    public DiceRollSimulator(DiceRollManager diceRollManager) {
         this.diceRollManager = diceRollManager;
     }
 

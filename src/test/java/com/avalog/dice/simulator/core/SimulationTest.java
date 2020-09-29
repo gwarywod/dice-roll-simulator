@@ -6,21 +6,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 class SimulationTest {
 
-    private Simulation simulation;
+    private DiceRollSimulator diceRollSimulator;
 
     private DiceRollManager diceRollManager;
 
     @BeforeEach
     void initTest() {
         diceRollManager = Mockito.mock(DiceRollManager.class);
-        simulation = new Simulation(diceRollManager);
+        diceRollSimulator = new DiceRollSimulator(diceRollManager);
     }
 
     @Test
@@ -35,7 +34,7 @@ class SimulationTest {
 
         SimulationConfig simulationConfig = SimulationConfig.builder().dicePieces(pieces).diceSides(diceSides).rolls(roles).build();
 
-        SimulationResult simulateResult = simulation.simulate(simulationConfig);
+        SimulationResult simulateResult = diceRollSimulator.simulate(simulationConfig);
 
         Assertions.assertNotNull(simulateResult, "Result of simulation must be non-null");
         Assertions.assertNotNull(simulateResult.getRollResults(), "Simulation steps must be non-null");
