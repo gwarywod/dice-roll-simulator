@@ -1,8 +1,6 @@
 package com.avalog.dice.simulator.core;
 
 import com.avalog.dice.simulator.core.model.Dice;
-import com.avalog.dice.simulator.core.utils.DiceHelper;
-import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

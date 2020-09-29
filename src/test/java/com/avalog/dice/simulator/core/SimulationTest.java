@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 
 class SimulationTest {
 
@@ -36,7 +37,7 @@ class SimulationTest {
         final int roles = 10;
         final int rollSum = 6;
 
-        Mockito.when(diceRollManager.sumRoll(any(), pieces)).thenReturn(rollSum);
+        Mockito.when(diceRollManager.sumRoll(any(), eq(pieces))).thenReturn(rollSum);
 
         SimulationConfig simulationConfig = SimulationConfig.builder().dicePieces(pieces).diceSides(diceSides).rolls(roles).build();
 
@@ -50,7 +51,7 @@ class SimulationTest {
             .collect(Collectors.toList());
         Assertions.assertIterableEquals(expectedStepsResult, simulateResult.getRollResults(), "Unexpected step of result");
 
-        Mockito.verify(diceRollManager, Mockito.times(roles)).sumRoll(any(), pieces);
+        Mockito.verify(diceRollManager, Mockito.times(roles)).sumRoll(any(), eq(pieces));
 
     }
 }

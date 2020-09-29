@@ -12,7 +12,7 @@ public class SimulationRequest {
      * Indicates how many dice will be involved in simulation
      */
     @Min(value = 1)
-    @Max(value = Integer.MAX_VALUE)
+    @Max(value = 100)
     @NotNull
     private Integer dicePieces;
 
@@ -29,6 +29,6 @@ public class SimulationRequest {
      */
     @Min(value = 1)
     @NotNull
-    @Max(value = Integer.MAX_VALUE)
+    @Max(value = 10000)
     private Integer rolls;
 }
