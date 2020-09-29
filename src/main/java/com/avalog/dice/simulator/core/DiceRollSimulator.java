@@ -36,17 +36,19 @@ public class DiceRollSimulator {
 
         SimulationEntity simulation = simulationService.createSimulation(configuration);
 
-        List<Dice> dices = DiceHelper.prepareDices(configuration.getDiceSides(), configuration.getDicePieces());
+        Dice dice = Dice.of(configuration.getDiceSides());
 
-        List<RollResult> results = IntStream.rangeClosed(1, configuration.getRolls()).mapToObj(i -> rollDices(dices)).collect(Collectors.toList());
+        List<RollResult> results = IntStream.rangeClosed(1, configuration.getRolls())
+            .mapToObj(i -> rollDices(dice, configuration.getDicePieces()))
+            .collect(Collectors.toList());
 
         simulationService.addResults(results, simulation);
 
         return SimulationResult.builder().rollResults(results).build();
     }
 
-    private RollResult rollDices(List<Dice> dices) {
-        int sum = diceRollManager.sumRoll(dices);
+    private RollResult rollDices(Dice dice, int pieces) {
+        int sum = diceRollManager.sumRoll(dice, pieces);
         return RollResult.builder().sum(sum).build();
     }
 }

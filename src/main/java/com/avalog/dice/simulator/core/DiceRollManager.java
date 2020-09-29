@@ -2,6 +2,7 @@ package com.avalog.dice.simulator.core;
 
 import com.avalog.dice.simulator.core.model.Dice;
 import java.util.List;
+import java.util.stream.IntStream;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +23,7 @@ public class DiceRollManager {
      *
      * @return Sum of the values of the dice rolled
      */
-    public int sumRoll(List<Dice> dices) {
-        return dices.stream().map(this::roll).mapToInt(i -> i).sum();
+    public int sumRoll(Dice dice, int pieces) {
+        return IntStream.rangeClosed(1, pieces).map(i -> roll(dice)).sum();
     }
 }

@@ -35,9 +35,9 @@ public class DiceRollManagerTest {
         final int sides = 1;
         final int pieces = 100;
 
-        List<Dice> dices = DiceHelper.prepareDices(sides, pieces);
+        Dice dice = Dice.of(sides);
 
-        int result = diceRollManager.sumRoll(dices);
+        int result = diceRollManager.sumRoll(dice, pieces);
 
         Assertions.assertTrue(result == pieces * sides);
     }
