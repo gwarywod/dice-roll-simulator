@@ -1,8 +1,10 @@
 package com.avalog.dice.simulator.core;
 
+import com.avalog.dice.simulator.core.dao.SimulationEntity;
 import com.avalog.dice.simulator.core.model.Dice;
 import com.avalog.dice.simulator.core.model.RollResult;
 import com.avalog.dice.simulator.core.model.SimulationResult;
+import com.avalog.dice.simulator.core.service.SimulationService;
 import com.avalog.dice.simulator.core.utils.DiceHelper;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,8 +18,11 @@ public class DiceRollSimulator {
 
     private final DiceRollManager diceRollManager;
 
-    public DiceRollSimulator(DiceRollManager diceRollManager) {
+    private final SimulationService simulationService;
+
+    public DiceRollSimulator(DiceRollManager diceRollManager, SimulationService simulationService) {
         this.diceRollManager = diceRollManager;
+        this.simulationService = simulationService;
     }
 
     /**
@@ -29,9 +34,13 @@ public class DiceRollSimulator {
 
         log.info("Starting simulation based on {}", configuration);
 
+        SimulationEntity simulation = simulationService.createSimulation(configuration);
+
         List<Dice> dices = DiceHelper.prepareDices(configuration.getDiceSides(), configuration.getDicePieces());
 
         List<RollResult> results = IntStream.rangeClosed(1, configuration.getRolls()).mapToObj(i -> rollDices(dices)).collect(Collectors.toList());
+
+        simulationService.addResults(results, simulation);
 
         return SimulationResult.builder().rollResults(results).build();
     }

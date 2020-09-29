@@ -2,6 +2,7 @@ package com.avalog.dice.simulator.core;
 
 import com.avalog.dice.simulator.core.model.RollResult;
 import com.avalog.dice.simulator.core.model.SimulationResult;
+import com.avalog.dice.simulator.core.service.SimulationService;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -16,10 +17,13 @@ class SimulationTest {
 
     private DiceRollManager diceRollManager;
 
+    private SimulationService simulationService;
+
     @BeforeEach
     void initTest() {
         diceRollManager = Mockito.mock(DiceRollManager.class);
-        diceRollSimulator = new DiceRollSimulator(diceRollManager);
+        simulationService = Mockito.mock(SimulationService.class);
+        diceRollSimulator = new DiceRollSimulator(diceRollManager, simulationService);
     }
 
     @Test
