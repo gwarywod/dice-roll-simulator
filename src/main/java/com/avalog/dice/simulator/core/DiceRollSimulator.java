@@ -5,7 +5,6 @@ import com.avalog.dice.simulator.core.model.Dice;
 import com.avalog.dice.simulator.core.model.RollResult;
 import com.avalog.dice.simulator.core.model.SimulationResult;
 import com.avalog.dice.simulator.core.service.SimulationService;
-import com.avalog.dice.simulator.core.utils.DiceHelper;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

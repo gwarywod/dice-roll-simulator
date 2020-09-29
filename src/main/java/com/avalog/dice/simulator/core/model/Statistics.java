@@ -7,7 +7,8 @@ import lombok.Singular;
 
 @Getter
 @Builder
-public class SimulationResult {
+public class Statistics {
+
     @Singular
-    List<RollResult> rollResults;
+    private List<StatisticSummary> statisticSummaries;
 }

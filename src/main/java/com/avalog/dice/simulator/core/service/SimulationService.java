@@ -42,4 +42,8 @@ public class SimulationService {
 
         simulationResultDao.saveAll(collect);
     }
+
+    public List<SimulationEntity> getAllSimulations() {
+        return simulationDao.findAll();
+    }
 }

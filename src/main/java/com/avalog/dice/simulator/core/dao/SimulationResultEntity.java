@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -22,7 +22,7 @@ public class SimulationResultEntity {
 
     protected Integer sum;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "simulation_id")
     protected SimulationEntity simulation;
 }

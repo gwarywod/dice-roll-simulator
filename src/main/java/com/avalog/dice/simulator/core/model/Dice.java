@@ -1,6 +1,5 @@
 package com.avalog.dice.simulator.core.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Value;
 
