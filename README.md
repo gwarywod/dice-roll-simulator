@@ -32,6 +32,13 @@ Application is listening on port 8080 and provides two endpoints:
 |1| GET | /api/dice-roll/simulation | dicePieces,diceSides,rolls | 
 |2| GET | /api/dice-roll/statistics | none | 
 
+> Note
+    - Added limitation to query parameters:
+>   -  dicePieces, the allowed values are between 1 and 100
+>   -  diceSides, the allowed values are between 4 and 6
+>   -  rolls, the allowed values are between 1 and 10000
+
+
 ### Example
 
 To perform simulation just call:
